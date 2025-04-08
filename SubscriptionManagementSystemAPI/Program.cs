@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using SubscriptionManagementSystem.Shared.Data;
 
 namespace SubscriptionManagementSystemAPI
 {
@@ -11,6 +13,10 @@ namespace SubscriptionManagementSystemAPI
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+            //Register the DbContext with the connection string gotten from appsettings.json
+            builder.Services.AddDbContext<SubscriptionManagementDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
