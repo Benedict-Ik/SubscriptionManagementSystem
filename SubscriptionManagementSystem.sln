@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35506.116 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubscriptionManagementSystemAPI", "SubscriptionManagementSystemAPI\SubscriptionManagementSystemAPI.csproj", "{DE5D1D6B-3704-40E5-A06A-77D90C110BE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubscriptionManagementSystem.Shared", "SubscriptionManagementSystem.Shared\SubscriptionManagementSystem.Shared.csproj", "{A8BA23EC-F885-4B83-AE71-E3499C3A7564}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DE5D1D6B-3704-40E5-A06A-77D90C110BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE5D1D6B-3704-40E5-A06A-77D90C110BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE5D1D6B-3704-40E5-A06A-77D90C110BE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8BA23EC-F885-4B83-AE71-E3499C3A7564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8BA23EC-F885-4B83-AE71-E3499C3A7564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8BA23EC-F885-4B83-AE71-E3499C3A7564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8BA23EC-F885-4B83-AE71-E3499C3A7564}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
