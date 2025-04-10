@@ -1,0 +1,15 @@
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\bin\Debug\net8.0\SubscriptionManagementSystem.Shared.deps.json
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\bin\Debug\net8.0\SubscriptionManagementSystem.Shared.runtimeconfig.json
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\bin\Debug\net8.0\SubscriptionManagementSystem.Shared.dll
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\bin\Debug\net8.0\SubscriptionManagementSystem.Shared.pdb
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\obj\Debug\net8.0\SubscriptionManagementSystem.Shared.csproj.AssemblyReference.cache
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\obj\Debug\net8.0\SubscriptionManagementSystem.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\obj\Debug\net8.0\SubscriptionManagementSystem.Shared.AssemblyInfoInputs.cache
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\obj\Debug\net8.0\SubscriptionManagementSystem.Shared.AssemblyInfo.cs
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\obj\Debug\net8.0\SubscriptionManagementSystem.Shared.csproj.CoreCompileInputs.cache
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\obj\Debug\net8.0\SubscriptionManagementSystem.Shared.sourcelink.json
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\obj\Debug\net8.0\SubscriptionManagementSystem.Shared.dll
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\obj\Debug\net8.0\refint\SubscriptionManagementSystem.Shared.dll
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\obj\Debug\net8.0\SubscriptionManagementSystem.Shared.pdb
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\obj\Debug\net8.0\SubscriptionManagementSystem.Shared.genruntimeconfig.cache
+C:\Users\bened\OneDrive\Documents\Projects\CSharp\SubscriptionManagementSystem\SubscriptionManagementSystem.Shared\obj\Debug\net8.0\ref\SubscriptionManagementSystem.Shared.dll

@@ -13,6 +13,7 @@ namespace SubscriptionManagementSystem.Shared.Models.Domain
         public string Password { get; set; } = string.Empty;
 
         [StringLength(100, ErrorMessage = "Email cannot exceed 100 characters.")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; } = string.Empty;
 
         [StringLength(70, ErrorMessage = "First Name cannot exceed 70 characters.")]
@@ -24,7 +25,8 @@ namespace SubscriptionManagementSystem.Shared.Models.Domain
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? LastLoginDate { get; set; }
 
-        // Navigation properties - collections are initialized inline to avoid null references.
+
+        // Navigation properties (N-M)- collections are initialized inline to avoid null references.
         public ICollection<ExternalLogin> ExternalLogins { get; set; } = new List<ExternalLogin>();
         public ICollection<Subscription> Subscriptions { get; set; } = new List<Subscription>();
         public ICollection<Payment> Payments { get; set; } = new List<Payment>();

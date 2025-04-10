@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "2tUJYBrgXb/D40FYCygSek/0JkKmUjafuLNDbvUqjUM=",
+  "Source": "SubscriptionManagementSystemAPI",
+  "BasePath": "_content/SubscriptionManagementSystemAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

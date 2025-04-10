@@ -1,40 +1,55 @@
 # Subscription Management System 
 
-- Added a new folder called `Data` in our shared `SubscriptionManagementSystem.shared` project which will house our DbContext class any any other data related class.
-- Created a new class called `SubscriptionManagementDbContext.cs` which will serve as the bridge between our project and the database with the help of a tool called Entity Framework (EF) Core.
-- In order to use EF Core, the following packages have to be installed (via the Package Manager Console or by right-clicking on Dependencies > Manage Nuget Packages):
-    - Microsoft.EntityFrameworkCore: For the core EF functionality.
-    - Microsoft.EntityFrameworkCore.SqlServer (For SQL Server Databases): For interacting with SQL Server databases.
-    - Microsoft.EntityFrameworkCore.Tools: For running migrations from the Package Manager Console.
-    - Microsoft.EntityFrameworkCore.Design (optional): For design-time features like migrations and scaffolding. We won't use it here.
-> If an error is thrown in any installation, ensure the versions installed corresponds with the version of your Dot Net running on your local. You may also need to pay attention to the 'Dependencies' section in each of these packages to ensure all is in order.
-- I installed `EntityFrameworkCore` in the Shared project and `EntityFrameworkCore.SqlServer` and `EntityFrameworkCore.Tools` in the API project.
-- In the newly created DbContext class, `SubscriptionManagementDbContext`, inherit the base DbContext class.
-- Add a constructor that takes in DbContextOptions\<SubscriptionManagementDbContext>options and passes it to the base class.
-- All entities with navigation properties (in the model classes) have corresponding DbSet\<T> declarations.
-- Foreign Key properties in each entity follow standard naming conventions, allowing EF Core to automatically map the relationships.
-- The absence of explicit configuration in OnModelCreating is acceptable because EF Core conventions will pick up the relationships from your model definitions.
-- At this point, we created the database that will be used to store our tables and data.
-- Open SSMS and create a new database called `SubscriptionManagementSystemDb`.
-- Now, navigate to the `appsettings.json` file in the API project and add a connection string to the database we just created. The connection string should look like this:
+Here is what we did in this branch:
 
-```json
- "ConnectionStrings": {
-    "DefaultConnection": "Server=<Server Name>;Database=<Database Name>;Trusted_Connection=True;TrustServerCertificate=true"
-  }
-```
-    
-- \<Server Name> is the name of your SQL Server instance. It is usually displayed as a pop up box for authentication once your SSMS is launched. 
-  - If you are using a local instance, it might be something like `localhost` or `.\SQLEXPRESS`.
-  - If you are using a remote server, it will be the name or IP address of that server.
-  - If you are using Docker, it will be the name of the container running SQL Server.
-- \<Database Name> is the name of the database just created.
-
-- Next, I registered the `SubscriptionManagementDbContext` in the `Program.cs` file (within the API project) for dependency injection:
-
+- To run migrations in a solution with multiple projects, we'll need to make a couple changes/configurations unlike the normal convention of a solution with a single project.
+- We started off by modifying the User, Payment and Subscription model classes by mainly explicitly declaring and adding the `[EmailAddress]` and `[ForeignKey]` attributes.
+- Modified the DbContext, SubscriptionManagementDbContext, onModelCreating as seen below:
 ```C#
-builder.Services.AddDbContext<SubscriptionManagementDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    base.OnModelCreating(modelBuilder);
+
+    modelBuilder.Entity<Payment>()
+        .Property(p => p.Amount)
+        .HasPrecision(10, 2);
+
+    modelBuilder.Entity<Plan>()
+        .Property(p => p.Price)
+        .HasPrecision(10, 2);
+}
 ```
-> This line of code tells the ASP.NET Core dependency injection system to create an instance of `SubscriptionManagementDbContext` whenever it's needed, using the connection string defined in `appsettings.json`. The `UseSqlServer` method configures the context to use SQL Server as the database provider.
-> You may have to add a reference to the `shared` project in the `Program.cs` file
+
+- This will ensure SQL Server stores these decimal values properly.
+- Added a new folder called `Data` in the API project.
+- Added a Design-Time Factory file called `SubscriptionManagementDbContextFactory` in the API project, which is embedded in the newly created `Data` folder, and is used to instantiate your DbContext at design time (for migrations), with the below code:
+```C#
+public class SubscriptionManagementDbContextFactory : IDesignTimeDbContextFactory<SubscriptionManagementDbContext>
+{
+    public SubscriptionManagementDbContext CreateDbContext(string[] args)
+    {
+        IConfigurationRoot configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json")
+            .Build();
+
+        var optionsBuilder = new DbContextOptionsBuilder<SubscriptionManagementDbContext>();
+
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+        optionsBuilder.UseSqlServer(connectionString);
+
+        return new SubscriptionManagementDbContext(optionsBuilder.Options);
+    }
+}
+```
+- Run the Migrations (from the Package Manager Console) with the commands below:
+```bash
+Add-Migration InitialCreate -Project SubscriptionManagementSystem.Shared -StartupProject SubscriptionManagementSystemAPI -OutputDir Migrations
+Update-Database -Project SubscriptionManagementSystem.Shared -StartupProject SubscriptionManagementSystemAPI
+```
+> Make sure the `Default Project` is set to `SubscriptionManagementSystem.Shared` in the Package Manager Console, which is where the DbContext lives.  
+
+> If you run into an error when running any of the above commands, specifically an error relating to `Modelbuilder`, go ahead an install the packages: `Microsoft.EntityFrameworkCore.Design`, `Microsoft.EntityFrameworkCore.SqlServer`, and `Microsoft.EntityFrameworkCore.Relational` in your shared project. Also ensure it is of the same version with the other EF related packages you have installed. Then rebuild the solution, delete Migration project and re-run the commands.  
+
+- Now your migrations should run successfully.

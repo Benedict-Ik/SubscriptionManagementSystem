@@ -18,11 +18,17 @@ namespace SubscriptionManagementSystem.Shared.Data
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Notification> Notifications { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             // Add custom model configuration here if needed.
+            modelBuilder.Entity<Payment>()
+                .Property(p => p.Amount)
+                .HasPrecision(10, 2);
+
+            modelBuilder.Entity<Plan>()
+                .Property(p => p.Price)
+                .HasPrecision(10, 2);
         }
     }
 }

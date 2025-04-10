@@ -27,6 +27,7 @@ namespace SubscriptionManagementSystem.Shared.Models.Domain
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
+
         // Navigation property for subscriptions referencing this plan.
         public ICollection<Subscription> Subscriptions { get; set; } = new List<Subscription>();
     }

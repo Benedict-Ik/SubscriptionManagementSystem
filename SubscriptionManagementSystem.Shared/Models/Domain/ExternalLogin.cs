@@ -12,6 +12,7 @@ namespace SubscriptionManagementSystem.Shared.Models.Domain
         [StringLength(100, ErrorMessage = "ProviderKey cannot exceed 100 characters.")]
         public string ProviderKey { get; set; } = string.Empty;
 
+        // Foreign Key
         public Guid UserId { get; set; }
 
         // Navigation property 
