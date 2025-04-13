@@ -12,7 +12,7 @@ using SubscriptionManagementSystem.Shared.Data;
 namespace SubscriptionManagementSystem.Shared.Migrations
 {
     [DbContext(typeof(SubscriptionManagementDbContext))]
-    [Migration("20250410144803_InitialCreate")]
+    [Migration("20250413212813_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -145,9 +145,6 @@ namespace SubscriptionManagementSystem.Shared.Migrations
                         .HasPrecision(10, 2)
                         .HasColumnType("decimal(10,2)");
 
-                    b.Property<Guid>("SubscriptionId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("PlanId");
 
                     b.ToTable("Plans");
@@ -167,9 +164,6 @@ namespace SubscriptionManagementSystem.Shared.Migrations
 
                     b.Property<DateTime?>("NextRenewalDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<Guid>("PaymentId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("PlanId")
                         .HasColumnType("uniqueidentifier");
@@ -206,9 +200,6 @@ namespace SubscriptionManagementSystem.Shared.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("ExternalLoginId")
-                        .HasColumnType("int");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(70)
@@ -222,19 +213,10 @@ namespace SubscriptionManagementSystem.Shared.Migrations
                         .HasMaxLength(70)
                         .HasColumnType("nvarchar(70)");
 
-                    b.Property<Guid>("NotificationId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<Guid>("PaymentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SubscriptionId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -279,7 +261,7 @@ namespace SubscriptionManagementSystem.Shared.Migrations
                     b.HasOne("SubscriptionManagementSystem.Shared.Models.Domain.User", "User")
                         .WithMany("Payments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Subscription");
