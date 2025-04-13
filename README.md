@@ -35,7 +35,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
-- This will ensure SQL Server stores these decimal values properly and define teh right cascade rules to avoid conflicts.
+- This will ensure SQL Server stores these decimal values properly and define the right cascade rules to avoid conflicts.
 - Added a new folder called `Data` in the API project.
 - Added a Design-Time Factory file called `SubscriptionManagementDbContextFactory` in the API project, which is embedded in the newly created `Data` folder, and is used to instantiate your DbContext at design time (for migrations), with the below code:
 ```C#
